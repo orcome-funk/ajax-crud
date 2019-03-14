@@ -18,3 +18,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+/*
+ * Classtypes Routes
+ */
+Route::resource('classtypes', 'ClasstypeController');

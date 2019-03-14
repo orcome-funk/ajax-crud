@@ -23,3 +23,8 @@ Route::get('/home', 'HomeController@index')->name('home');
  * Classtypes Routes
  */
 Route::resource('classtypes', 'ClasstypeController');
+
+/*
+ * StudentClasses Routes
+ */
+Route::resource('student_classes', 'StudentClassController');

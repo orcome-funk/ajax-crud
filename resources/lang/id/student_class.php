@@ -13,6 +13,7 @@ return [
     'empty'         => 'Belum ada Siswa',
     'back_to_show'  => 'Kembali ke detail Siswa',
     'back_to_index' => 'Kembali ke daftar Siswa',
+    'select_class'  => '-- Pilih Kelas --',
 
     // Actions
     'create'         => 'Input Siswa Baru',
@@ -29,5 +30,6 @@ return [
 
     // Attributes
     'name'        => 'Nama Siswa',
+    'class'       => 'Kelas',
     'description' => 'Deskripsi Siswa',
 ];

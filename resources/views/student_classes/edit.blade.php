@@ -12,6 +12,8 @@
                 <div class="card-body">
                     <label class="form-label text-primary">{{ __('student_class.name') }}</label>
                     <p>{{ $studentClass->name }}</p>
+                    <label class="form-label text-primary">{{ __('student_class.class') }}</label>
+                    <p>{{ $studentClass->classType->name }}</p>
                     <label class="form-label text-primary">{{ __('student_class.description') }}</label>
                     <p>{{ $studentClass->description }}</p>
                     {!! $errors->first('student_class_id', '<span class="invalid-feedback" role="alert">:message</span>') !!}
@@ -38,6 +40,19 @@
                         <label for="name" class="form-label">{{ __('student_class.name') }} <span class="form-required">*</span></label>
                         <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name', $studentClass->name) }}" required>
                         {!! $errors->first('name', '<span class="invalid-feedback" role="alert">:message</span>') !!}
+                    </div>
+                    <div class="form-group">
+                        <label for="class_id" class="form-label">{{ __('student_class.class') }} <span class="form-required">*</span></label>
+                        <select name="class_id" id="class_id" class="form-control" required>
+                            <option value="">{{ __('student_class.select_class') }}</option>
+                            @foreach ($classTypes as $classType)
+                                <option value="{{ $classType->id }}"
+                                    {{ $studentClass->class_id === $classType->id ? 'selected' : '' }}>
+                                    {{ $classType->name }}
+                                </option>
+                            @endforeach
+                        </select>
+                        {!! $errors->first('class_id', '<span class="invalid-feedback" role="alert">:message</span>') !!}
                     </div>
                     <div class="form-group">
                         <label for="description" class="form-label">{{ __('student_class.description') }}</label>

@@ -11,6 +11,7 @@
                 <table class="table table-sm">
                     <tbody>
                         <tr><td>{{ __('student_class.name') }}</td><td>{{ $studentClass->name }}</td></tr>
+                        <tr><td>{{ __('student_class.class') }}</td><td>{{ $studentClass->classType->name }}</td></tr>
                         <tr><td>{{ __('student_class.description') }}</td><td>{{ $studentClass->description }}</td></tr>
                     </tbody>
                 </table>

@@ -30,6 +30,7 @@
                     <tr>
                         <th class="text-center">{{ __('app.table_no') }}</th>
                         <th>{{ __('student_class.name') }}</th>
+                        <th>{{ __('student_class.class') }}</th>
                         <th>{{ __('student_class.description') }}</th>
                         <th class="text-center">{{ __('app.action') }}</th>
                     </tr>
@@ -39,6 +40,7 @@
                     <tr>
                         <td class="text-center">{{ $studentClasses->firstItem() + $key }}</td>
                         <td>{!! $studentClass->name_link !!}</td>
+                        <td>{{ $studentClass->classType->name }}</td>
                         <td>{{ $studentClass->description }}</td>
                         <td class="text-center">
                             @can('view', $studentClass)

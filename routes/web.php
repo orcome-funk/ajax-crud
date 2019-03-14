@@ -16,15 +16,18 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+Route::middleware('auth')->group(function () {
 
-Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/home', 'HomeController@index')->name('home');
 
-/*
- * Classtypes Routes
- */
-Route::resource('classtypes', 'ClasstypeController');
+    /*
+     * Classtypes Routes
+     */
+    Route::resource('classtypes', 'ClasstypeController');
 
-/*
- * StudentClasses Routes
- */
-Route::resource('student_classes', 'StudentClassController');
+    /*
+     * StudentClasses Routes
+     */
+    Route::resource('student_classes', 'StudentClassController');
+
+});

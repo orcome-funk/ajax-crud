@@ -2,8 +2,9 @@
 
 namespace Tests\Feature;
 
-use App\StudentClass;
+use App\Classtype;
 use Tests\TestCase;
+use App\StudentClass;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class ManageStudentClassTest extends TestCase
@@ -32,12 +33,16 @@ class ManageStudentClassTest extends TestCase
     public function user_can_create_a_student_class()
     {
         $this->loginAsUser();
+        $class = factory(Classtype::class)->create();
+
         $this->visitRoute('student_classes.index');
 
         $this->click(__('student_class.create'));
         $this->seeRouteIs('student_classes.create');
 
-        $this->submitForm(__('student_class.create'), $this->getCreateFields());
+        $this->submitForm(__('student_class.create'), $this->getCreateFields([
+            'class_id' => $class->id,
+        ]));
 
         $this->seeRouteIs('student_classes.show', StudentClass::first());
 
@@ -90,13 +95,16 @@ class ManageStudentClassTest extends TestCase
     public function user_can_edit_a_student_class()
     {
         $this->loginAsUser();
+        $class = factory(Classtype::class)->create();
         $studentClass = factory(StudentClass::class)->create(['name' => 'Testing 123']);
 
         $this->visitRoute('student_classes.show', $studentClass);
         $this->click('edit-student_class-'.$studentClass->id);
         $this->seeRouteIs('student_classes.edit', $studentClass);
 
-        $this->submitForm(__('student_class.update'), $this->getEditFields());
+        $this->submitForm(__('student_class.update'), $this->getEditFields([
+            'class_id' => $class->id,
+        ]));
 
         $this->seeRouteIs('student_classes.show', $studentClass);
 

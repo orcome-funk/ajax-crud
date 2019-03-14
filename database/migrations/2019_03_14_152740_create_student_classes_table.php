@@ -16,11 +16,13 @@ class CreateStudentClassesTable extends Migration
         Schema::create('student_classes', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 60);
+            $table->unsignedInteger('class_id');
             $table->string('description')->nullable();
             $table->unsignedInteger('creator_id');
             $table->timestamps();
 
             $table->foreign('creator_id')->references('id')->on('users')->onDelete('restrict');
+            $table->foreign('class_id')->references('id')->on('classtypes')->onDelete('restrict');
         });
     }
 

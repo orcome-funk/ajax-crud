@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Classtype;
 use App\StudentClass;
 use Illuminate\Http\Request;
 
@@ -30,7 +31,9 @@ class StudentClassController extends Controller
     {
         $this->authorize('create', new StudentClass);
 
-        return view('student_classes.create');
+        $classTypes = Classtype::all();
+
+        return view('student_classes.create', compact('classTypes'));
     }
 
     /**
@@ -45,6 +48,7 @@ class StudentClassController extends Controller
 
         $newStudentClass = $request->validate([
             'name'        => 'required|max:60',
+            'class_id'    => 'required',
             'description' => 'nullable|max:255',
         ]);
         $newStudentClass['creator_id'] = auth()->id();
@@ -74,8 +78,9 @@ class StudentClassController extends Controller
     public function edit(StudentClass $studentClass)
     {
         $this->authorize('update', $studentClass);
+        $classTypes = Classtype::all();
 
-        return view('student_classes.edit', compact('studentClass'));
+        return view('student_classes.edit', compact('studentClass', 'classTypes'));
     }
 
     /**
@@ -91,6 +96,7 @@ class StudentClassController extends Controller
 
         $studentClassData = $request->validate([
             'name'        => 'required|max:60',
+            'class_id'    => 'required',
             'description' => 'nullable|max:255',
         ]);
         $studentClass->update($studentClassData);

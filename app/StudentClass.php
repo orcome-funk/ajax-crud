@@ -3,11 +3,12 @@
 namespace App;
 
 use App\User;
+use App\Classtype;
 use Illuminate\Database\Eloquent\Model;
 
 class StudentClass extends Model
 {
-    protected $fillable = ['name', 'description', 'creator_id'];
+    protected $fillable = ['name', 'class_id', 'description', 'creator_id'];
 
     public function getNameLinkAttribute()
     {
@@ -25,5 +26,10 @@ class StudentClass extends Model
     public function creator()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function classType()
+    {
+        return $this->belongsTo(Classtype::class, 'class_id');
     }
 }

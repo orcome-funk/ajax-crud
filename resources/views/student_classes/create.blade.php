@@ -16,6 +16,18 @@
                         {!! $errors->first('name', '<span class="invalid-feedback" role="alert">:message</span>') !!}
                     </div>
                     <div class="form-group">
+                        <label for="class_id" class="form-label">{{ __('student_class.class') }} <span class="form-required">*</span></label>
+                        <select name="class_id" id="class_id" class="form-control">
+                            <option value="">{{ __('student_class.select_class') }}</option>
+                            @foreach ($classTypes as $classType)
+                                <option value="{{ $classType->id }}">
+                                    {{ $classType->name }}
+                                </option>
+                            @endforeach
+                        </select>
+                        {!! $errors->first('class_id', '<span class="invalid-feedback" role="alert">:message</span>') !!}
+                    </div>
+                    <div class="form-group">
                         <label for="description" class="form-label">{{ __('student_class.description') }}</label>
                         <textarea id="description" class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}" name="description" rows="4">{{ old('description') }}</textarea>
                         {!! $errors->first('description', '<span class="invalid-feedback" role="alert">:message</span>') !!}

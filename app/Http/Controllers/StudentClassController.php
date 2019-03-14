@@ -13,13 +13,17 @@ class StudentClassController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function index()
+    public function index(Request $request)
     {
-        $studentClassQuery = StudentClass::query();
-        $studentClassQuery->where('name', 'like', '%'.request('q').'%');
-        $studentClasses = $studentClassQuery->paginate(25);
+        $classTypes = Classtype::all();
+        $studentClasses = StudentClass::paginate(25);
+        if ($request->class_id) {
+            $studentClassQuery = StudentClass::query();
+            $studentClassQuery->where('class_id', request('class_id'));
+            $studentClasses = $studentClassQuery->paginate(25);
+        }
 
-        return view('student_classes.index', compact('studentClasses'));
+        return view('student_classes.index', compact('studentClasses', 'classTypes'));
     }
 
     /**

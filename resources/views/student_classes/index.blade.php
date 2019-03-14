@@ -17,9 +17,21 @@
         <div class="card">
             <div class="card-header">
                 <form method="GET" action="" accept-charset="UTF-8" class="form-inline">
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         <label for="q" class="form-label">{{ __('student_class.search') }}</label>
                         <input placeholder="{{ __('student_class.search_text') }}" name="q" type="text" id="q" class="form-control mx-sm-2" value="{{ request('q') }}">
+                    </div> --}}
+                    <div class="form-group">
+                        <label for="class_id" class="form-label">{{ __('student_class.select_class') }}</label>
+                        <select name="class_id" id="class_id" class="form-control">
+                            <option value="">-- {{ __('student_class.select_class') }} --</option>
+                            @foreach ($classTypes as $classType)
+                                <option value="{{ $classType->id }}">
+                                    {{ $classType->name }}
+                                </option>
+                            @endforeach
+                        </select>
+                        {!! $errors->first('class_id', '<span class="invalid-feedback" role="alert">:message</span>') !!}
                     </div>
                     <input type="submit" value="{{ __('student_class.search') }}" class="btn btn-secondary">
                     <a href="{{ route('student_classes.index') }}" class="btn btn-link">{{ __('app.reset') }}</a>

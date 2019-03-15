@@ -55,6 +55,9 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('student_classes.index') }}">{{ __('student_class.list') }}</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('ajax_samples.index') }}">{{ __('student_class.ajax_sample') }}</a>
+                            </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>

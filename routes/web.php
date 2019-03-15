@@ -30,4 +30,9 @@ Route::middleware('auth')->group(function () {
      */
     Route::resource('student_classes', 'StudentClassController');
 
+    /*
+     * Ajax Routes
+     */
+    Route::get('ajax_samples', 'AjaxSampleController@index')->name('ajax_samples.index');
+
 });

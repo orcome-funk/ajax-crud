@@ -2,18 +2,20 @@
 
 return [
     // Labels
-    'student_class' => 'Siswa',
-    'list'          => 'Daftar Siswa',
-    'search'        => 'Cari Siswa',
-    'search_text'   => 'Nama ...',
-    'all'           => 'Semua Siswa',
-    'select'        => 'Pilih Siswa',
-    'detail'        => 'Detail Siswa',
-    'not_found'     => 'Siswa tidak ditemukan',
-    'empty'         => 'Belum ada Siswa',
-    'back_to_show'  => 'Kembali ke detail Siswa',
-    'back_to_index' => 'Kembali ke daftar Siswa',
-    'select_class'  => 'Pilih Kelas',
+    'student_class'  => 'Siswa',
+    'list'           => 'Daftar Siswa',
+    'search'         => 'Cari Siswa',
+    'search_text'    => 'Nama ...',
+    'all'            => 'Semua Siswa',
+    'select'         => 'Pilih Siswa',
+    'detail'         => 'Detail Siswa',
+    'not_found'      => 'Siswa tidak ditemukan',
+    'empty'          => 'Belum ada Siswa',
+    'back_to_show'   => 'Kembali ke detail Siswa',
+    'back_to_index'  => 'Kembali ke daftar Siswa',
+    'select_class'   => 'Pilih Kelas',
+    'select_student' => 'Pilih Siswa',
+    'ajax_sample'    => 'Contoh Ajax',
 
     // Actions
     'create'         => 'Input Siswa Baru',

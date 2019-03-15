@@ -45,7 +45,13 @@
         // console.log(id_class);
         // $.post("route", 'data', 'actionn untuk response');
         $.post("{{ route('api.students.index') }}", { class_id: id_class }, function (data) {
-            console.log(data);
+            // console.log(data);
+            var string = `<option value="">-- {{ __('student_class.select_student') }} --</option>`;
+            $.each(data, function(index, value) {
+                string = string + `<option value="` + index + `">` + value + `</option>`;
+            });
+            // console.log(string);
+            $("#student_id").html(string);
         });
     });
 })();

@@ -36,3 +36,18 @@
     </div>
 </div>
 @endsection
+
+@push('scripts')
+<script>
+(function () {
+    $("#class_id").change(function () {
+        var id_class = $("#class_id").val();
+        // console.log(id_class);
+        // $.post("route", 'data', 'actionn untuk response');
+        $.post("{{ route('api.students.index') }}", { class_id: id_class }, function (data) {
+            console.log(data);
+        });
+    });
+})();
+</script>
+@endpush

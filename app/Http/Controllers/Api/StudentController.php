@@ -10,6 +10,7 @@ class StudentController extends Controller
 {
     public function index()
     {
+        // return request('class_id');
         return StudentClass::where('class_id', request('class_id'))->pluck('name', 'id');
     }
 }
